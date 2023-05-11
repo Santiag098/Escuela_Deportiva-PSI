@@ -1,0 +1,41 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<div class="container" style="background-color:lightgray; width: 100%; height: 680px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
+    <header>
+        <h2>Sign Up</h2>
+    </header>
+    <div class="container" style="background-color: rgb(46, 56, 56); width: 100%; height: 580px; border-radius: 5px; margin-top: 10px;">
+        <form action="{% url 'signup' %}" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="first_name" class="form-label" style="color: white; margin-top: 10px;"><b>Firstname</b></label>
+                <input type="text" class="form-control" id="first_name" name="first_name">
+            </div>
+            <div class="mb-3">
+                <label for="last_name" class="form-label" style="color: white;"><b>Lastname</b></label>
+                <input type="text" class="form-control" id="last_name" name="last_name">
+            </div>
+            <div class="mb-3">
+                <label for="username" class="form-label" style="color: white;"><b>Username</b></label>
+                <input type="text" class="form-control" id="username" name="username">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label" style="color: white;"><b>Email</b></label>
+                <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label" style="color: white;"><b>Password</b></label>
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+            <div class="mb-3">
+                <label for="password2" class="form-label" style="color: white;"><b>Confirm Password</b></label>
+                <input type="password" class="form-control" id="password2" name="password2">
+            </div>
+            <button type="submit" class="btn btn-dark">Create</button>
+            <a class="btn btn-danger" href="{% url 'Home' %}">Return</a>
+        </form>
+    </div>
+    
+</div>
+{% endblock %}

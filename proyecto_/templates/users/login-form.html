@@ -1,0 +1,26 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+
+<div class="container" style="background-color: lightgray; width: 100%; height: 340px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"">
+    <header>
+        <h2 style="text-align: center;">Log In</h2>
+    </header>
+    <div class="container" style="background-color: rgb(46, 56, 56); width: 50%; height: 240px; border-radius: 5px; margin-top: 10px;" >
+        <form action="{% url 'start' %}" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="username" class="form-label" style="color: white; margin-top: 10px;"><b>Username</b></label>
+                <input type="text" class="form-control" id="username" name="username">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label" style="color: white;"><b>Password</b></label>
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+            
+            <button type="submit" class="btn btn-dark" style="align-items: center; margin-left: 230px;">Log In</button>
+            
+        </form>
+    </div>
+</div>
+{% endblock %}

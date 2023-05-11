@@ -1,0 +1,77 @@
+{% extends "layouts/base.html" %}
+
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="{% static 'css/main.css' %}" href="">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <header>
+            <h1>Escuela Deportiva</h1>
+        </header>
+        <section style="display: flex; background-color: lightgrey; width: auto; height: 300px;">
+            <div style="width: 50%; height: 100px; line-height: 100px">
+                <h4 style="margin-top: 50px; margin-left: 30px;">Nuestra escuela tiene como misión formular, adoptar, dirigir, coordinar y ejecutar la política pública, planes, programas y proyectos en materia del deporte, la recreación, el aprovechamiento del tiempo libre, la actividad física, para promover el bienestar y la calidad de vida.</h4>
+            </div>
+            <div style="width: 50%; height: 200px;">
+                <img src="{% static 'img/futbol-base.jpg' %}" alt="futbol" style="border-radius: 5px; height: 250px; display: block; margin-top: 25px; margin-left: 60px;">
+                <img src="{% static 'img/Logoescuelas-04.png' %}" alt="logo" style="width: 40%; margin-top: -300px; margin-left: 220px">
+            </div>
+        </section>
+        <section class="section2">
+            <div class="content2">
+                <h1 style="text-align: center;">Nuestras Categorias</h1>
+                <p style="text-align: center;">Manejamos diferentes categorias de futbol <br>Dependiendo de la edad del estudiante se le ubicará en su respectiva categoria.
+                </p>
+            </div>
+            <div class=" content3" style="margin-top: 30px; margin-left: -35px;">
+                <div class="card">
+                    <img src="{% static 'img/ciconfut.jpg' %}" alt="avatar" style=" margin-left: 50px; margin-top: 10px;">
+                    <div class="contenido">
+                        <h4 style="margin-left: 10px;"><b>Categoria 2002</b></h4>
+                        <p>Dirigida por: <br>Ricardo Contreras<br>Especialista en Educación Fisica y Recreación.</p>
+                        <p class="p2" style="margin-top: -10px;">@Ricardo_Con</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="{% static 'img/ciconfut.jpg' %}" alt="avatar" style=" margin-left: 50px; margin-top: 10px;">
+                    <div class="contenido">
+                        <h4 style="margin-left: 10px;"><b>Categoria 2004</b></h4>
+                        <p>Dirigida por: <br>Andres Quintero<br>Especialista en Educación Fisica y Recreación.</p>
+                        <p class="p2" style="margin-top: -10px;">@Andres-Quin</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="{% static 'img/ciconfut.jpg' %}" alt="avatar" style=" margin-left: 50px; margin-top: 10px;">
+                    <div class="contenido">
+                        <h4 style="margin-left: 10px;"><b>Categoria 2006</b></h4>
+                        <p>Dirigida por: <br>Carlos Duarte<br>Especialista en Educación Fisica y Recreación.</p>
+                        <p class="p2" style="margin-top: -10px;">@Carlitos_Du</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="{% static 'img/ciconfut.jpg' %}" alt="avatar" style=" margin-left: 50px; margin-top: 10px;">
+                    <div class="contenido">
+                        <h4 style="margin-left: 10px;"><b>Categoria 2008</b></h4>
+                        <p>Dirigida por:  <br>Laura Villamizar<br>Especialista en Educación Fisica y Recreación.</p>
+                        <p class="p2" style="margin-top: -10px;">@Laura_Vi</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer style="margin-top: 50px; background-color: lightgrey; width: 100%; height: 50px; border-radius: 2px;">
+            <h6 class="autor" style="line-height: 50px; height: 15px; margin-left: 40px;">Escuela Deportiva</h6>
+            <h6 class="copy" style="display: flex; justify-content: flex-end; margin-right: 60px; margin-top: -5px;">&#169; 2023 Derechos reservados</h6>
+        </footer>
+    </div>
+</body>
+</html>
+{% endblock %}
+
