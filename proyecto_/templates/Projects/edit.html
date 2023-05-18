@@ -1,3 +1,7 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -11,13 +15,15 @@
     <title>Edit</title>
     </head>
     <body>
-        <div class="container" style="background-color: lightgrey; width: 100%; height: 500px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;">
-            <h1 style="margin-left: 30px;">Edit Project</h1>
-        <div class="container" style="background-color: rgb(46, 56, 56); width: 95%; height: 380px; border-radius: 5px; margin-top: 30px;">
+        <header>
+            <h1 style="text-align: center;">Edit Project</h1>
+        </header>
+        <div class="container d-flex justify-content-center align-items-center" style="background-color: lightgrey; width: 100%; height: 450px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;">
+        <div class="container" style="background-color: rgb(46, 56, 56); width: 90%; height: 380px; border-radius: 5px;">
             <form action="{% url 'projects.update' project.id %}" method="POST">
                 {% csrf_token %}
                 <div class="mb-3">
-                    <label for="name" class="form-label" style="color: white;">Name</label>
+                    <label for="name" class="form-label" style="color: white;"><b>Name</b></label>
                     <input type="text" class="form-control" id="name" name="name" value="{{ project.name }}">
                 </div>
                 <div class="mb-3">
@@ -33,7 +39,7 @@
                     <input type="tel" class="form-control" id="phone" name="phone" value="{{ project.phone }}">
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
-                <a class="btn btn-danger" href="{% url 'projects.list' %}">Back to list</a>
+                <a class="btn btn-dark" href="{% url 'projects.list' %}">Return</a>
             </form>
         </div>
         </div>
@@ -54,3 +60,5 @@
     -->
     </body>
 </html>
+
+{% endblock %}
