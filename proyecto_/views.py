@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
-from .models import Project
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, JsonResponse
+from .models import Project, Pay
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
 
 # Create your views here.
@@ -18,7 +19,18 @@ def landing(request):
 @login_required
 def listProjects(request):
     projects = Project.objects.all()
-    return render(request,'Projects/list.html',{"projects":projects})
+    return render(request,'Projects/list.html',{
+        "projects":projects
+        })
+    
+@login_required
+def detailOfProject(request,project_id):
+    project = get_object_or_404(Project, id=project_id) 
+    pay = Pay.objects.filter(project_id=project_id)
+    return render(request,'projects/detail.html',{
+        "project": project,
+        "pay" : pay
+    })
 
 @login_required
 def showFormCreateProject(request):
@@ -66,6 +78,68 @@ def destroyProject(request, project_id):
     project.delete()
     return redirect('projects.list')
 
+#anexo
+@login_required
+def pay(request):
+    pay = Pay.objects.filter(user=request.user)#user
+    return render(request,'pay/list.html',{
+        "pay": pay
+    })
+
+@login_required
+def showCreatePayForm(request):
+    projects = Project.objects.filter(user=request.user)#user
+    return render(request,'pay/create.html',{
+        "projects" : projects
+    })
+
+@login_required
+def storePay(request):
+    Pay.objects.create(
+        name=request.POST['name'],
+        code=request.POST['code'],
+        pay_day=request.POST['pay_day'],
+        amount_paid=request.POST['amount_paid'],
+        project_id=request.POST['project_id'],
+    )
+
+    return redirect('pay.list')
+
+
+@login_required
+def showUpdatePayForm(request, pay_id):
+    projects = Project.objects.filter(user=request.user)#user
+    pay = get_object_or_404(Pay, id=pay_id)
+    return render(request,'pay/update.html',{
+        "projects" : projects,
+        "pay": pay
+    })
+
+@login_required
+def updatePay(request,pay_id):
+    pay = get_object_or_404(Pay, id=pay_id)
+    pay.name=request.POST["name"]
+    pay.code=request.POST["code"]
+    pay.pay_day=request.POST["pay_day"]
+    pay.amount_paid=request.POST["amount_paid"]
+    pay.project_id=request.POST["project_id"]#
+    pay.save()
+    return redirect('pay.list')
+
+@login_required
+def confirmDeletePay(request,pay_id):
+    pay = get_object_or_404(Pay, id=pay_id)
+    return render(request, "pay/delete.html", {
+        "pay": pay
+    })
+
+@login_required
+def destroyPay(request ,pay_id):#
+    pay = get_object_or_404(Pay, id=pay_id)
+    pay.delete()
+    return redirect('pay.list')
+
+
 def showSignupForm(request):
     return render(request, 'users/signup-form.html')
 
@@ -107,3 +181,8 @@ def startSession(request):
 def finishSession(request):
     logout(request)
     return redirect('Home')
+
+@login_required
+def pay_list(request):
+    pays = Pay.objects.all()
+    return render(request, 'pay/pay_list.html', {'pays': pays})
