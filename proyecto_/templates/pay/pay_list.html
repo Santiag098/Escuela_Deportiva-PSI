@@ -14,50 +14,48 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Incriptions</title>
+    <title>Pays</title>
 </head>
 
 <body>
     <header style="width: 100%; height: 55px; background-color: white;">
-        <h1 style="text-align: center;">Inscripciones</h1>
+        <h1 style="text-align: center;">Pagos</h1>
     </header>
     <div class="container" style="background-color:lightgray; width: 100%; height: 600px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
         
-        <a class="btn btn-dark mb-3" href="{% url 'projects.create' %}" style="margin-top: 20px;">Inscribase aqui</a>
+        <a class="btn btn-dark mb-3" href="{% url 'pay.create' %}" style="margin-top: 20px;">Pague aqui</a>
         <table class="table table-dark" style="border-radius: 10px solid black;">
             <thead style="border: 2px solid black;">
                 <tr>
-                    <td style="text-align: center" ;><b>ID</b></td>
+                    
                     <td style="text-align: center" ;><b>Name</b></td>
-                    <td style="text-align: center" ;><b>Date</b></td>
                     <td style="text-align: center" ;><b>Code</b></td>
-                    <td style="text-align: center" ;><b>Phone Number</b></td>
+                    <td style="text-align: center" ;><b>Amount Pay</b></td>
+                    <td style="text-align: center" ;><b>Description</b></td>
                     <td style="text-align: center; width: 20%;" ;><b>Actions</b></td>
                 </tr>
             </thead>
             <tbody>
-                {% for project in projects %}
+                {% for pay in pays %}
                 <tr class="table-active">
                     <td style="border: 2px solid black; text-align: center; vertical-align: middle;">
-                        {{ project.id }}
+                        {{ pay.project.name }}
                     </td>
                     <td style="border: 2px solid black; vertical-align: middle;">
-                        {{ project.name }}
+                        {{ pay.project.code }}
                     </td>
                     <td style="border: 2px solid black; vertical-align: middle;">
-                        {{ project.date }}
+                        {{ pay.amount_paid }}
                     </td>
+                    
                     <td style="border: 2px solid black; vertical-align: middle;">
-                        {{ project.code }}
-                    </td>
-                    <td style="border: 2px solid black; vertical-align: middle;">
-                        {{ project.phone }}
+                        {{ pay.description }}
                     </td>
                     <td style="border: 2px solid black;">
                         <div class="d-flex p-2">
-                            <a class="btn btn-warning" style="margin-right: 5px; color: white;" href="{% url 'projects.edit' project.id %}">Edit</a>
-                            <a class="btn btn-danger" href="{% url 'projects.delete' project.id %}">Delete</a>
-                            <a class="btn btn-primary" style="margin-left: 5px;" href="{% url 'projects.detail' project.id %}">Detalle</a>
+                            <a class="btn btn-warning" style="margin-right: 5px; color: white;" href="{% url 'pay.edit' pay.id %}">Edit</a>
+                            <a class="btn btn-danger" href="{% url 'pay.delete' pay.id %}">Delete</a>
+                            
                         </div>
                     </td>
                 </tr>

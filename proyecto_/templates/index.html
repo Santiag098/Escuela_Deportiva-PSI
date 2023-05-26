@@ -20,10 +20,19 @@
             <div style="width: 50%; height: 100px; line-height: 100px">
                 <h4 style="margin-top: 50px; margin-left: 30px;">Nuestra escuela tiene como misión formular, adoptar, dirigir, coordinar y ejecutar la política pública, planes, programas y proyectos en materia del deporte, la recreación, el aprovechamiento del tiempo libre, la actividad física, para promover el bienestar y la calidad de vida.</h4>
             </div>
-            <div style="width: 50%; height: 200px;">
-                <img src="{% static 'img/futbol-base.jpg' %}" alt="futbol" style="border-radius: 5px; height: 250px; display: block; margin-top: 25px; margin-left: 60px;">
-                <img src="{% static 'img/Logoescuelas-04.png' %}" alt="logo" style="width: 40%; margin-top: -300px; margin-left: 220px">
-            </div>
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner d-flex align-items-center">
+                  <div class="carousel-item active">
+                    <img src="{% static 'img/futbol-base.jpg' %}" class="d-block w-100" alt="futbol" style="width: 300px; height: 250px; margin-top: 20px; border-radius: 5px;">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{% static 'img/ninos-jugando.jpg.jpeg' %}" class="d-block w-100" alt="logo" style="width: 300px; height: 250px; margin-top: 20px; border-radius: 5px;">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{% static 'img/futbol-ninos.jpg.jpeg' %}" class="d-block w-100" alt="ninos" style="width: 300px; height: 250px; margin-top: 20px; border-radius: 5px;">
+                  </div>
+                </div>
+              </div>
         </section>
         <section class="section2">
             <div class="content2">
