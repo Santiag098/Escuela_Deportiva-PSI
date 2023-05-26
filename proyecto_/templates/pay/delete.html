@@ -16,21 +16,21 @@
     </head>
     <body>
         <header>
-            <h1 style="text-align: center;">Delete Project</h1>
+            <h1 style="text-align: center;">Delete Pay</h1>
         </header>
         <div class="container d-flex justify-content-center align-items-center" style="background-color: lightgrey; width: 100%; height: 430px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;">
         <div class="container" style="background-color: rgb(46, 56, 56); width: 90%; height: 380px; border-radius: 5px;">
             <div class="row d-flex justify-content-center mt-5">
                 <div class="col -md-10" style="margin-top: 90px;">
-                    <h3 style="color: white; text-align: center;">¿Seguro que desea eliminar el proyecto {{ project.name }}?</h3>
+                    <h3 style="color: white; text-align: center;">¿Seguro que desea eliminar su pago? {{ pay.id }}?</h3>
                 </div>
             </div>
             <div class="row d-flex justify-content-center mt-3">
                 <div class="col-md-2 d-flex justify-content-center align-items-center">
-                    <a class="btn btn-dark" href="{% url 'projects.list' %}" style="margin-left: 40px;">Return</a>
+                    <a class="btn btn-dark" href="{% url 'pay.list' %}" style="margin-left: 40px;">Return</a>
                 </div>
                 <div class="col-md-2">
-                    <a class="btn btn-danger" href="{% url 'projects.destroy' project.id %}" style="margin-right: 40px;">Delete</a>
+                    <a class="btn btn-danger" href="{% url 'pay.destroy' pay.project.id %}" style="margin-right: 40px;">Delete</a>
                 </div>
             </div>
         </div>

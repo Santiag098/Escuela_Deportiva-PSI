@@ -15,6 +15,7 @@ urlpatterns = [
     path('projects-update/<int:project_id>',views.updateProject, name ='projects.update'),
     path('projects-delete/<int:project_id>',views.showConfirmDelete, name='projects.delete'),
     path('projescts-destroy/<int:project_id>',views.destroyProject, name='projects.destroy'),
+    path('projescts-detail/<int:project_id>',views.detailOfProject,name='projects.detail'),
     path('pay/',views.pay, name="pay.list"),
     path('pay-create/',views.showCreatePayForm, name="pay.create"),
     path('pay-store/',views.storePay, name="pay.store"),

@@ -15,10 +15,11 @@ def __str__(self):
 
 
 class Pay(models.Model):
-    name = models.CharField(max_length=200)
-    code = models.IntegerField(default=0)
-    pay_day = models.DateField(default="2023-05-18")
-    amount_paid = models.FloatField(default=0)
+    credit_num=models.IntegerField(max_length=16)
+    due_date= models.TextField(default=0)
+    security_code= models.IntegerField(max_length=10)
+    amount_paid=models.FloatField(default=0)
+    description= models.CharField(max_length=200)
     project = models.ForeignKey(Project,on_delete=models.CASCADE, default=1)
     
 def __str__(self):

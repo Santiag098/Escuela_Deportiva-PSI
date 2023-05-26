@@ -81,26 +81,28 @@ def destroyProject(request, project_id):
 #anexo
 @login_required
 def pay(request):
-    pay = Pay.objects.filter(user=request.user)#user
-    return render(request,'pay/list.html',{
-        "pay": pay
+    pays = Pay.objects.filter(user=request.user)#user
+    return render(request,'pay/pay_list.html',{
+        "pays": pays
     })
 
 @login_required
 def showCreatePayForm(request):
-    projects = Project.objects.filter(user=request.user)#user
+    # pays = Pay.objects.all()
+    projects = Project.objects.all()
     return render(request,'pay/create.html',{
         "projects" : projects
     })
 
 @login_required
 def storePay(request):
-    Pay.objects.create(
-        name=request.POST['name'],
-        code=request.POST['code'],
-        pay_day=request.POST['pay_day'],
+    pay = Pay.objects.create(
+        credit_num=request.POST['credit_num'],
+        due_date=request.POST['due_date'],
+        security_code=request.POST['security_code'],
         amount_paid=request.POST['amount_paid'],
-        project_id=request.POST['project_id'],
+        description=request.POST['description'],
+        project_id=request.POST['project_id']
     )
 
     return redirect('pay.list')
@@ -108,7 +110,7 @@ def storePay(request):
 
 @login_required
 def showUpdatePayForm(request, pay_id):
-    projects = Project.objects.filter(user=request.user)#user
+    projects = Project.objects.all()#user
     pay = get_object_or_404(Pay, id=pay_id)
     return render(request,'pay/update.html',{
         "projects" : projects,
@@ -116,13 +118,15 @@ def showUpdatePayForm(request, pay_id):
     })
 
 @login_required
-def updatePay(request,pay_id):
+def updatePay(request,pay_id): 
     pay = get_object_or_404(Pay, id=pay_id)
-    pay.name=request.POST["name"]
-    pay.code=request.POST["code"]
-    pay.pay_day=request.POST["pay_day"]
+    pay.credit_num=request.POST["credit_num"]
+    pay.due_date=request.POST['due_date']
+    pay.security_code=request.POST['security_code']
     pay.amount_paid=request.POST["amount_paid"]
-    pay.project_id=request.POST["project_id"]#
+    pay.description=request.POST['description'] 
+   
+    
     pay.save()
     return redirect('pay.list')
 
@@ -182,6 +186,12 @@ def finishSession(request):
     logout(request)
     return redirect('Home')
 
+@login_required
+def showFormEditPay(request,Pay_id):
+    pay = get_object_or_404(Pay, id = Pay_id)
+    return render(request,'pay/edit.html',{
+        'pay': pay
+    })
 @login_required
 def pay_list(request):
     pays = Pay.objects.all()
