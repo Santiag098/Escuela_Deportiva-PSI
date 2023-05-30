@@ -26,10 +26,10 @@ def listProjects(request):
 @login_required
 def detailOfProject(request,project_id):
     project = get_object_or_404(Project, id=project_id) 
-    pay = Pay.objects.filter(project_id=project_id)
+    pays = Pay.objects.filter(project_id=project_id)
     return render(request,'projects/detail.html',{
         "project": project,
-        "pay" : pay
+        "pays" : pays
     })
 
 @login_required
@@ -125,7 +125,6 @@ def updatePay(request,pay_id):
     pay.security_code=request.POST['security_code']
     pay.amount_paid=request.POST["amount_paid"]
     pay.description=request.POST['description'] 
-   
     
     pay.save()
     return redirect('pay.list')
